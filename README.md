@@ -19,11 +19,25 @@ git clone https://github.com/armanlamba/final-project-cloud-automation.git
 
 cd final-project-cloud-automation
 
-Step 2: Initialize Terraform
+there are 2 ways to run this 
+
+--> though github
+
+git init 
+
+git add .
+
+git commit -m "new update"  
+
+git push origin main
+
+# make sure you have github action pipeline of terraform script setup to run terraform script 
+
+--> Local computer 
 
 alias tf=terraform
 
-tf validate
+tf init
 
 tf plan
 
