@@ -31,6 +31,8 @@ tf apply -auto-approve
 
 Step 3: Configure Web Servers with Ansible
 
+cd ansible
+
 ansible-playbook -i aws_ec2.yaml playbook3.yaml
 
 Step 4: Automate Deployments with GitHub Actions
@@ -43,4 +45,4 @@ Terraform Apply: Automatically apply the Terraform configuration to the specifie
 
 Cleanup Instructions
 
-terraform destroy
+terraform destroy -auto-approve
