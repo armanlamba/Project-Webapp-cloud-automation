@@ -16,6 +16,7 @@ Step 1: Clone the Repository
 Clone the project repository from GitHub to your local machine.
 
 git clone https://github.com/armanlamba/final-project-cloud-automation.git
+
 cd final-project-cloud-automation
 
 Step 2: Initialize Terraform
