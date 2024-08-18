@@ -67,6 +67,31 @@ Security Scan: Tools like trivy and tflint will scan the Terraform code.
 
 Terraform Apply: Automatically apply the Terraform configuration to the specified environment.
 
+
+#Step 5 Bastion Host access to VMs 
+
+make sure your keypair is added to your bastion server from your local environment.
+
+you can use this command to do it 
+
+scp -i keypair1.pem keypair1.pem keypair1.pub ec2-3-82-126-194.compute-1.amazonaws.com:/home/ec2-user  
+
+connect to ssh link of your bastion server
+
+ssh -i "keypair1.pem" ec2-user@ec2-3-82-126-194.compute-1.amazonaws.com
+
+change to your ssh instance accordingly 
+
+once connected 
+
+login to your vm in private server 
+
+Webserver 5
+
+in this case - ssh -i "keypair1.pem" ec2-user@10.1.5.135
+
+exit
+
 #Cleanup Instructions
 
 terraform destroy -auto-approve
