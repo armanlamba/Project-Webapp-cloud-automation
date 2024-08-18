@@ -2,22 +2,30 @@
 Two-Tier web application automation with Terraform, Ansible and GitHub Actions
 
 Prerequisites
+
 Before deploying the project, ensure you have the following:
 
 AWS Account: An active AWS account with permissions to create EC2 instances, VPCs, and other resources.
+
 Terraform Installed: Ensure you have Terraform installed locally. You can download it from Terraform’s official site.
+
 Ansible Installed: Ensure you have Ansible installed on your control host.
+
 GitHub Account: A GitHub account with a repository where the Terraform and Ansible configurations are stored.
+
 SSH Key Pair: An SSH key pair for accessing the EC2 instances.
 
 Deployment Instructions
 
 Step 1: Clone the Repository
+
 : Clone the project repository from GitHub to your local machine.
 
 git clone https://github.com/armanlamba/final-project-cloud-automation.git
 
 cd final-project-cloud-automation
+
+Step 2 : make infrastrucure
 
 there are 2 ways to run this 
 
@@ -28,6 +36,8 @@ git init
 git add .
 
 git commit -m "new update"  
+
+git pull origin main --rebase
 
 git push origin main
 
