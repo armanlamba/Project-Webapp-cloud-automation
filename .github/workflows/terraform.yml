@@ -73,7 +73,7 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
 
-    # Install the latest version of Terraform CL  I and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -89,8 +89,10 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan 
+      run: terraform plan
 
     # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      run: terraform apply -auto-approve 
+      
+      run: terraform apply -auto-approve
+
