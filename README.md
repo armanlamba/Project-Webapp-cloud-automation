@@ -95,3 +95,4 @@ exit
 #Cleanup Instructions
 
 terraform destroy -auto-approve
+
