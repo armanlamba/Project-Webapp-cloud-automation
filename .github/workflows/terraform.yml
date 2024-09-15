@@ -41,64 +41,64 @@
 #       uses: hashicorp/setup-terraform@v1
 #       with:
 #         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-name: 'Terraform'
+# name: 'Terraform'
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
-jobs:
-  terraform:
-    name: 'Terraform'
-    runs-on: ubuntu-latest
-    environment: production
+# jobs:
+#   terraform:
+#     name: 'Terraform'
+#     runs-on: ubuntu-latest
+#     environment: production
 
-    defaults:
-      run:
-        shell: bash
+#     defaults:
+#       run:
+#         shell: bash
 
-    steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@v4
+#     steps:
+#     # Checkout the repository to the GitHub Actions runner
+#     - name: Checkout
+#       uses: actions/checkout@v4
 
-    # Configure AWS credentials using the official AWS action
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v2
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-        aws-region: us-east-1  
+#     # Configure AWS credentials using the official AWS action
+#     - name: Configure AWS Credentials
+#       uses: aws-actions/configure-aws-credentials@v2
+#       with:
+#         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+#         aws-region: us-east-1  
             
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+#     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+#     - name: Setup Terraform
+#       uses: hashicorp/setup-terraform@v1
+#       with:
+#         cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init
+#     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+#     - name: Terraform Init
+#       run: terraform init
 
-    - name: Run Trivy vulnerability scanner (Network)
-      uses: aquasecurity/trivy-action@0.20.0
-      with:
-         scan-type: 'filesystem'
-         path: './'
+#     - name: Run Trivy vulnerability scanner (Network)
+#       uses: aquasecurity/trivy-action@0.20.0
+#       with:
+#          scan-type: 'filesystem'
+#          path: './'
          
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt
+#     # Checks that all Terraform configuration files adhere to a canonical format
+#     - name: Terraform Format
+#       run: terraform fmt
 
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      run: terraform plan
+#     # Generates an execution plan for Terraform
+#     - name: Terraform Plan
+#       run: terraform plan
 
-    # On push to "main", build or change infrastructure according to Terraform configuration files
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
+#     # On push to "main", build or change infrastructure according to Terraform configuration files
+#     - name: Terraform Apply
+#       run: terraform apply -auto-approve
